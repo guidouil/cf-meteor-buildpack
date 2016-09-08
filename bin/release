@@ -35,6 +35,7 @@ extract_root_url
 
 cat <<-YAML
 ---
-default_process_types:
+applications:
+- name: sharemyoffice
   command: COUCHDB_URL=$COUCHDB_URL ROOT_URL=$ROOT_URL vendor/node/bin/node deploy/bundle/main.js
 YAML
