@@ -97,7 +97,7 @@ install_node
 install_meteor
 # build
 # env_var
-start_meteor
+# start_meteor
 
 status "Checking for post_compile script"
 if [ -f $BUILD_DIR/bin/post_compile ] ; then
