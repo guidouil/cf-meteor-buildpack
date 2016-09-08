@@ -29,7 +29,7 @@ extract_root_url() {
   echo "ROOT_URL: $ROOT_URL"
 }
 
-# extract_mongo_url
+extract_mongo_url
 set_couchdb_url
 extract_root_url
 
