@@ -65,6 +65,7 @@ install_meteor() {
 
   status "Updating PATH with Meteor"
   PATH=$HOME/.meteor:$PATH
+  meteor --help
 }
 
 build() {
