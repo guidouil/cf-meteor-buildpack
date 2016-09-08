@@ -219,11 +219,11 @@ elif type sudo >/dev/null 2>&1; then
   # XXX this means that we can run sudo too many times. we should never
   #     run it more than once if it fails the first time
   if [ ! -d "$PREFIX/bin" ] ; then
-      sudo mkdir -m 755 "$PREFIX" || true
-      sudo mkdir -m 755 "$PREFIX/bin" || true
+      mkdir -m 755 "$PREFIX" || true
+      mkdir -m 755 "$PREFIX/bin" || true
   fi
 
-  if sudo cp "$LAUNCHER" "$PREFIX/bin/meteor"; then
+  if cp "$LAUNCHER" "$PREFIX/bin/meteor"; then
     cat <<"EOF"
 
 To get started fast:
