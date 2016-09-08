@@ -29,12 +29,12 @@ extract_root_url() {
   echo "ROOT_URL: $ROOT_URL"
 }
 
-extract_mongo_url
+# extract_mongo_url
 set_couchdb_url
 extract_root_url
 
 cat <<-YAML
 ---
 default_process_types:
-  web: MONGO_URL=$MONGO_URL COUCHDB_URL=$COUCHDB_URL ROOT_URL=$ROOT_URL vendor/node/bin/node deploy/bundle/main.js
+  command: COUCHDB_URL=$COUCHDB_URL ROOT_URL=$ROOT_URL vendor/node/bin/node deploy/bundle/main.js
 YAML
