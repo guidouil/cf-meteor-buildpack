@@ -50,10 +50,9 @@ install_meteor() {
   # curl https://install.meteor.com | sh
   status "Downloading Meteor install script"
   METEOR_INSTALL_SCRIPT=install_meteor.sh
-  # curl https://install.meteor.com/ > $METEOR_INSTALL_SCRIPT
-  curl https://raw.githubusercontent.com/guidouil/cf-meteor-buildpack/master/meteor-install.sh > $METEOR_INSTALL_SCRIPT
+  curl https://install.meteor.com/?release=1.2.1 > $METEOR_INSTALL_SCRIPT
 
-  status "Installing Meteor connected to $COUCHDB_URL"
+  status "Installing Meteor connected to $MONGO_URL"
   sed -e '/^#!\/bin\/sh/ s/$/ -x/' \
     -e 's/set -/#set -/' \
     -e 's/curl --progress-bar --fail.*/curl "$TARBALL_URL" > meteor-bundle.tgz; tar -xzf meteor-bundle.tgz -C "$INSTALL_TMPDIR" -o/' \
@@ -72,8 +71,7 @@ build() {
   (
     cd $BUILD_DIR
     status "Building meteor bundle"
-    # meteor build --directory deploy --server http://localhost:3000
-    /home/vcap/.meteor/packages/meteor-tool/1.1.10/mt-os.linux.x86_64/scripts/admin/launch-meteor build --directory deploy --server http://localhost:3000
+    meteor build --directory deploy --server http://localhost:3000
     cd deploy/bundle/programs/server
     status "Installing npm dependencies"
     npm install 2>&1 | indent
