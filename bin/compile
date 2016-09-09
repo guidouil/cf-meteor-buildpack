@@ -62,6 +62,7 @@ install_meteor() {
   status "Execute ./install-meteor-verbose.sh"
   ./install-meteor-verbose.sh
   status "Done"
+  meteor --version
 
   status "Updating PATH with Meteor"
   PATH=$HOME/.meteor:$PATH
