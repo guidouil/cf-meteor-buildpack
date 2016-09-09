@@ -79,25 +79,12 @@ build() {
   )
 }
 
-env_var() {
-  export MONGO_URL="mongodb://127.0.0.1:27017/smo"
-  status "MONGO_URL: $MONGO_URL"
-  export COUCHDB_URL="https://cadm_itg_dw_05:fxpadm05@cloudant.localbnpp.bluemix.net"
-  status "COUCHDB_URL: $COUCHDB_URL"
-}
-
-start_meteor () {
-  COUCHDB_URL=https://cadm_itg_dw_05:fxpadm05@cloudant.localbnpp.bluemix.net meteor
-}
-
 [ ! -d $BUILD_DIR ] && mkdir $BUILD_DIR
 [ ! -d $CACHE_DIR ] && mkdir $CACHE_DIR
 
 install_node
 install_meteor
-# build
-# env_var
-# start_meteor
+build
 
 status "Checking for post_compile script"
 if [ -f $BUILD_DIR/bin/post_compile ] ; then
